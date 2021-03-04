@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class RegistrationFormTest {
+public class RegistrationFormTest extends TestBase {
     private final String REGISTRATION_URL = "https://demoqa.com/automation-practice-form";
     Faker faker = new Faker();
     String firstName = faker.name().firstName(),
