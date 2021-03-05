@@ -5,6 +5,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationFormTest extends TestBase {
     private final String REGISTRATION_URL = "https://demoqa.com/automation-practice-form";
@@ -32,7 +33,7 @@ public class RegistrationFormTest extends TestBase {
 
     @Test
     public void fieldsTest() {
-        open(REGISTRATION_URL);
+        step("open page", ()->open(REGISTRATION_URL));
         $(".main-header").shouldHave(text("Practice Form"));
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
