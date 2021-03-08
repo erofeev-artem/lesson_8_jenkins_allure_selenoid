@@ -21,5 +21,6 @@ public class TestBase {
         AttachmentsHelper.attachScreenshot("Last screenshot");
         AttachmentsHelper.attachAsText("Browser console logs", AttachmentsHelper.getConsoleLog());
         AttachmentsHelper.attachPageSource();
+        AttachmentsHelper.attachVideo();
     }
 }
