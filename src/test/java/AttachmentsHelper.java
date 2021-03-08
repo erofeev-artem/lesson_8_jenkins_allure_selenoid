@@ -15,12 +15,17 @@ public class AttachmentsHelper {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    @Attachment(value = "{PageSource}", type = "text/plain")
-    public static byte[] attachPageSource(){
+    @Attachment(value = "Page source", type = "text/plain")
+    public static byte[] attachPageSource() {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
-    @Attachment(value = "{ConsoleLog}", type = "text/plain")
-    public static String attachConsoleLog(){
-        return String.join(" ", Selenide.getWebDriverLogs(BROWSER));}
+    @Attachment(value = "{attachName}", type = "text/plain")
+    public static String attachAsText(String attachName, String message) {
+        return message;
+    }
+
+    public static String getConsoleLog() {
+        return String.join(" ", Selenide.getWebDriverLogs(BROWSER));
+    }
 }
