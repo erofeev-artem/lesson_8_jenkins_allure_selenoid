@@ -1,7 +1,5 @@
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverLogs;
 import io.qameta.allure.Attachment;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
