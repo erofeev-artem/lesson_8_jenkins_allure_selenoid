@@ -32,7 +32,7 @@ public class RegistrationFormTest extends TestBase {
 
 
     @Test
-    public void fieldsTest() {
+    public void positiveFieldsTest() {
         step("open page", () -> open(REGISTRATION_URL));
         step("fill the form", () -> {
             $(".main-header").shouldHave(text("Practice Form"));
@@ -72,6 +72,17 @@ public class RegistrationFormTest extends TestBase {
                     text(address),
                     text(state),
                     text(city));
+        });
+    }
+
+    @Test
+    public void negativeFieldsTest() {
+        step("open page", () -> open(REGISTRATION_URL));
+        step("fill the form", () -> {
+            $(".main-header").shouldHave(text("Practice Form"));
+            $("#firstName").setValue(firstName);
+            $("#lastName").setValue(lastName);
+            $("#genterWrapper").find(byText("Other1")).click();
         });
     }
 }
