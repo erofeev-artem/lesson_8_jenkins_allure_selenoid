@@ -33,41 +33,45 @@ public class RegistrationFormTest extends TestBase {
 
     @Test
     public void fieldsTest() {
-        step("open page", ()->open(REGISTRATION_URL));
-        $(".main-header").shouldHave(text("Practice Form"));
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(email);
-        $("#genterWrapper").find(byText("Other")).click();
-        $("#userNumber").setValue(mobile);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption(birthMonth);
-        $(".react-datepicker__year-select").selectOption(birthYear);
-        $(".react-datepicker__month").find(byText(birthDay)).click();
-        $("#subjectsContainer #subjectsInput").setValue(subject).pressEnter();
-        $("#subjectsContainer #subjectsInput").setValue(subjectTwoShort).pressEnter();
-        $("#hobbiesWrapper").find(byText(hobbies)).click();
-        $("#hobbiesWrapper").find(byText(hobbiesTwo)).click();
-        $("#uploadPicture").uploadFromClasspath(uploadPath);
-        $("#currentAddress").setValue(address).pressTab();
-        $("#state").click();
-        $("#state").find(byText(state)).click();
-        $("#city").click();
-        $("#city").find(byText(city)).click();
-        $("#submit").click();
-        $(".modal-content").shouldHave(text(firstName),
-                text(email),
-                text(gender),
-                text(mobile),
-                text(fullDate),
-                text(subject),
-                text(subjectTwo),
-                text(hobbies),
-                text(hobbiesTwo),
-                text(fileName),
-                text(address),
-                text(state),
-                text(city));
+        step("open page", () -> open(REGISTRATION_URL));
+        step("fill the form", () -> {
+            $(".main-header").shouldHave(text("Practice Form"));
+            $("#firstName").setValue(firstName);
+            $("#lastName").setValue(lastName);
+            $("#userEmail").setValue(email);
+            $("#genterWrapper").find(byText("Other")).click();
+            $("#userNumber").setValue(mobile);
+            $("#dateOfBirthInput").click();
+            $(".react-datepicker__month-select").click();
+            $(".react-datepicker__month-select").selectOption(birthMonth);
+            $(".react-datepicker__year-select").selectOption(birthYear);
+            $(".react-datepicker__month").find(byText(birthDay)).click();
+            $("#subjectsContainer #subjectsInput").setValue(subject).pressEnter();
+            $("#subjectsContainer #subjectsInput").setValue(subjectTwoShort).pressEnter();
+            $("#hobbiesWrapper").find(byText(hobbies)).click();
+            $("#hobbiesWrapper").find(byText(hobbiesTwo)).click();
+            $("#uploadPicture").uploadFromClasspath(uploadPath);
+            $("#currentAddress").setValue(address).pressTab();
+            $("#state").click();
+            $("#state").find(byText(state)).click();
+            $("#city").click();
+            $("#city").find(byText(city)).click();
+            $("#submit").click();
+        });
+        step("check result", () -> {
+            $(".modal-content").shouldHave(text(firstName),
+                    text(email),
+                    text(gender),
+                    text(mobile),
+                    text(fullDate),
+                    text(subject),
+                    text(subjectTwo),
+                    text(hobbies),
+                    text(hobbiesTwo),
+                    text(fileName),
+                    text(address),
+                    text(state),
+                    text(city));
+        });
     }
 }
