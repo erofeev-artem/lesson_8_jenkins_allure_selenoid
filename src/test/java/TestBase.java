@@ -8,13 +8,13 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 public class TestBase {
     @BeforeAll
-    public void setup() {
+    public static void setup() {
         Configuration.browser = System.getProperty("browser", "chrome");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         addListener("AllureSelenide", new AllureSelenide());
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub";
+        Configuration.remote = System.getProperty("remote_driver");
     }
 
     @AfterEach
