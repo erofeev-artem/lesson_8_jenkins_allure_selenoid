@@ -31,3 +31,19 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(Test){
+    systemProperties += System.properties;
+}
+
+task positiveTests(type: Test){
+    useJUnitPlatform{
+        includeTags("positive")
+    }
+}
+
+task negativeTests(type: Test){
+    useJUnitPlatform{
+        includeTags("negative")
+    }
+}
