@@ -28,11 +28,11 @@ public class AttachmentsHelper {
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
     public static String attachVideo() {
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-                + getVideoUrl() + "' type='video/mp4/></video></bode></html>";
+                + getVideoUrl() + "' type='video/mp4/'></video></bode></html>";
     }
 
     public static String getConsoleLog() {
-        return String.join(" ", Selenide.getWebDriverLogs(BROWSER));
+        return String.join("\n", Selenide.getWebDriverLogs(BROWSER));
     }
 
     public static String getVideoUrl() {

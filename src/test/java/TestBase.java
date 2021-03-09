@@ -9,11 +9,12 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 public class TestBase {
     @BeforeAll
     public static void setup() {
+        addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
         Configuration.browser = System.getProperty("browser", "chrome");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-        addListener("AllureSelenide", new AllureSelenide());
+        Configuration.browserCapabilities = capabilities;
         Configuration.remote = System.getProperty("remote_driver");
     }
 
